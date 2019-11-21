@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center">{{ __('Register as ') }} 
+                <div class="card-header text-center">{{ __('Register as . . .') }} 
                     <button id="btn" class="btn btn-outline-dark px-5">Employer</button>
                 </div>
 
@@ -46,7 +46,7 @@
                             <label for="business_name" class="col-md-4 col-form-label text-md-right">{{ __('Business Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="business_name" type="text" class="form-control @error('business_name') is-invalid @enderror" name="business_name" value="{{ old('business_name') }}" required autocomplete="business_name" autofocus>
+                                <input id="business_name" type="text" class="form-control @error('business_name') is-invalid @enderror" name="business_name" value="{{ old('business_name') }}" autocomplete="business_name" autofocus>
 
                                 @error('business_name')
                                     <span class="invalid-feedback" role="alert">
