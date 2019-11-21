@@ -15,3 +15,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
+
+ 
+Route::resource('job_seeker', 'job_seeker_controller');  
+Route::resource('posted_job', 'posted_job_controller');  
+Route::resource('applied_job', 'applied_job_controller');  
