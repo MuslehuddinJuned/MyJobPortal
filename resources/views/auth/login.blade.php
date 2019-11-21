@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row justify-content-center mt-lg-5">
+        <div class="col-md-6 my-auto">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
@@ -67,6 +67,10 @@
                     </form>
                 </div>
             </div>
+        </div>
+        <div class="col-md-6">
+            <h1 class="display-3 text-center">Welcome to Largest Job Portal in Bangladesh</h1>
+
         </div>
     </div>
 </div>
