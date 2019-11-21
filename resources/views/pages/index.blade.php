@@ -11,7 +11,7 @@ Hi and Welcome
     <h3>Employer</h3>
 </div>
 <div class="card card-body bg-white">
-    <h3>Seeker</h3>
+    <h3>Job Seeker</h3>
 </div>
 
 @endsection
