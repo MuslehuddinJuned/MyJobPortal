@@ -2,19 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\user_profile;
-use App\User;
+use App\user_basic;
 use DB;
 use View;
 
-class user_profile_controller extends Controller
+class user_controller extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth', ['except'=>[]]);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +18,7 @@ class user_profile_controller extends Controller
     public function index()
     {
         $users = DB::table('users')->where('id', '=', auth()->user()->id)->get();
-        return view('user_profile.index')->with('users', $users);
+        return view('user_basic.index')->with('users', $users);
     }
 
     /**
@@ -66,14 +61,12 @@ class user_profile_controller extends Controller
      */
     public function edit($id)
     {
-        // Check for correct user
         if(auth()->user()->id != $id){
             return redirect('/user_profile.index')->with('error','Unauthorized Page');
         }
 
-         $User = DB::table('users')->where('id', '=', auth()->user()->id)->get(); 
-     
-        return view('user_profile.edit')->with('user_profile', $User);
+        $user_basic_info = DB::table('users')->where('id', '=', auth()->user()->id)->get();      
+        return view('user_basic.edit')->with('user_basic', $user_basic_info);
     }
 
     /**
@@ -85,13 +78,13 @@ class user_profile_controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        $User = DB::table('users')->where('id', '=', auth()->user()->id)->get();
+        $User = user_basic::find($id);
         $User->first_name = $request->input('first_name');
         $User->last_name = $request->input('last_name');
         $User->business_name = $request->input('business_name');
         $User->save();
 
-        return redirect('/user_profile')->with('success', 'Profile Updated');
+        return redirect('/user_basic')->with('success', 'Profile Updated');
     }
 
     /**

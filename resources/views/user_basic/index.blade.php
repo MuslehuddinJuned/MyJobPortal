@@ -13,7 +13,7 @@
                 <h4> Email: {{$user->email}}</h4>
             @endif            
         @endforeach
-        <a href="/user_profile/{{$user->id}}/edit" class="btn btn-primary float-left px-5 mt-2 col-md-3">Edit</a>
+        <a href="/user_basic/{{$user->id}}/edit" class="btn btn-primary float-left px-5 mt-2 col-md-3">Edit</a>
     </div>
 
 @endsection
