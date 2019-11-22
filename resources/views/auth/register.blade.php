@@ -25,7 +25,17 @@
                                     </span>
                                 @enderror
                             </div>
-                            <p id="text1"></p>
+
+                            <div class="d-none">
+                                <input id="user_type" type="text" class="form-control @error('user_type') is-invalid @enderror" name="user_type" value="1" required autocomplete="user_type" autofocus>
+
+                                @error('user_type')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            
                         </div>
 
                         <div class="form-group row">
@@ -117,7 +127,7 @@
         $("#btn").click(function(){
             $(this).text($(this).text() == 'Employer' ? 'Job Seeker' : 'Employer');
             $("#business").toggle(500);
-            $("#business_name").text("");
+            $("#user_type").val($(this).text() == 'Employer' ? '1' : '0');
         });
     });
 </script>
