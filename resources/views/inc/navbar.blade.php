@@ -34,7 +34,7 @@
                   Job Seeker
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Profile</a>
+                  <a class="dropdown-item" href="/user_basic">Profile</a>
                   <a class="dropdown-item" href="#">Search job</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">Dashboard</a>

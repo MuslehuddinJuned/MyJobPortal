@@ -78,10 +78,55 @@ class user_controller extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'business_name' => ['max:255'],
+            'profile_image' => 'image|nullable|max:256',
+            'resume' => 'file|nullable|max:256'
+        ]);
+
+
+        
+
+        // Handle File Upload
+        if($request->hasFile('profile_pic')){
+            //Get file name with extension
+            $fileNameWithExt = $request->file('profile_pic')->getClientOriginalName();
+            // Get just file name
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // get just ext
+            $extension = $request->file('profile_pic')->getClientOriginalExtension();
+            // File name to store
+            $imageNameToStore = '_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('profile_pic')->storeAs('public/profile_pic', $imageNameToStore);
+        }
+
+        if($request->hasFile('resume')){
+            //Get file name with extension
+            $fileNameWithExt = $request->file('resume')->getClientOriginalName();
+            // Get just file name
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // get just ext
+            $extension = $request->file('resume')->getClientOriginalExtension();
+            // File name to store
+            $fileNameToStore = '_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('resume')->storeAs('public/resume', $fileNameToStore);
+        }
+
         $User = user_basic::find($id);
         $User->first_name = $request->input('first_name');
         $User->last_name = $request->input('last_name');
         $User->business_name = $request->input('business_name');
+        $User->skill = $request->input('skill');
+        if($request->hasFile('profile_pic')){
+            $User->profile_pic = $imageNameToStore;
+        }
+        if($request->hasFile('resume')){
+            $User->resume = $fileNameToStore;
+        }
         $User->save();
 
         return redirect('/user_basic')->with('success', 'Profile Updated');
