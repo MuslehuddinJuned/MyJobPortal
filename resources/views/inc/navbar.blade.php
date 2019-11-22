@@ -22,7 +22,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/user_basic">Profile</a>
-                    <a class="dropdown-item" href="#">Post A Job</a>
+                    <a class="dropdown-item" href="/posted_job">Post A Job</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Dashboard</a>
                 </div>

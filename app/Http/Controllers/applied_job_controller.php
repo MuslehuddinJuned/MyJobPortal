@@ -3,9 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\posted_job;
+use DB;
+use View;
 
 class applied_job_controller extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except'=>[]]);
+    }
     /**
      * Display a listing of the resource.
      *
