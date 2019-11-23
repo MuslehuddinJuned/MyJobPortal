@@ -13,18 +13,18 @@
                
                 
             @endif
-                <h4> First Name: {{$user->first_name}}{{$user->profile_pic}}</h4>
+                <h4> First Name: {{$user->first_name}}</h4>
                 <h4> Last Name: {{$user->last_name}}</h4>
             @if ($user->user_type==1)
                 <h4> Business Name: {{$user->business_name}}</h4>
             @endif
                 <h4> Email: {{$user->email}}</h4>
             @if ($user->user_type==0)
-                <h4> Skill:</h4>
-                <div class="card p-2"><p> {!!$user->skill!!}</p></div>
+                <h4> Skills</h4>
+                <div class="card p-2 bg-light mb-2"><p> {!!$user->skill!!}</p></div>
                 <h4> Resume: 
                     @if ($user->resume)
-                        <a href="/storage/resume/{{$user->resume}}">Download</a></h4>
+                        <a href="/storage/resume/{{$user->resume}}">Download Resume</a></h4>
                     @else
                         <a href="/user_basic/{{$user->id}}/edit" class="text-danger" >Upload Resume</a></h4>
                     @endif 

@@ -63,7 +63,15 @@ class posted_job_controller extends Controller
      */
     public function show($id)
     {
-        //
+        $posted_job = DB::table('users')
+        ->join('posted_job', 'users.id', '=', 'posted_job.user_id')
+        ->where('posted_job.id', '=', $id)
+        ->select('users.business_name', 'posted_job.*')
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+
+         return view('posted_job.show')->with('posted_job', $posted_job);
     }
 
     /**

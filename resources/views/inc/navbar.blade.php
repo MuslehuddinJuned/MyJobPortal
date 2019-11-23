@@ -22,9 +22,9 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/user_basic">Profile</a>
-                    <a class="dropdown-item" href="/posted_job">Post A Job</a>
+                    <a class="dropdown-item" href="/posted_job/create">Post A Job</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Dashboard</a>
+                    <a class="dropdown-item" href="/posted_job">Dashboard</a>
                 </div>
               </li>
               
@@ -35,7 +35,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="/user_basic">Profile</a>
-                  <a class="dropdown-item" href="#">Search job</a>
+                  <a class="dropdown-item" href="/applied_job">Search job</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">Dashboard</a>
                 </div>
