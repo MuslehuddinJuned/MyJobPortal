@@ -4,11 +4,10 @@
     <div class="card p-3 mb-3">
     <h2>All Applied Job</h2>
     </div>
-    @if(count($posted_job) > 0)
-        @foreach ($posted_job as $job)
+    @if(count($applied_job) > 0)
+        @foreach ($applied_job as $job)
             <div class="card p-3 my-3">
                 <h4>{{$job->job_title}}</h4>
-                <h5>{{$job->business_name}}</h5>
                 <div class="row">
                 <div class="col-10 text-truncate">{!!$job->job_description!!}</div>
                 </div>
@@ -22,10 +21,10 @@
             </div>
                         
         @endforeach
-        {{ $posted_job->links()}}
+        {{ $applied_job->links()}}
     @else
         <div class="card p-3 my-3">
-            <P>No Job Found</P>
+            <P>You did not applied to any job</P>
         </div>
     @endif
 

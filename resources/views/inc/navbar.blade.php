@@ -37,7 +37,7 @@
                   <a class="dropdown-item" href="/user_basic">Profile</a>
                   <a class="dropdown-item" href="/applied_job">Search job</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Dashboard</a>
+                  <a class="dropdown-item" href="applied_job/show">Dashboard</a>
                 </div>
               </li>
               @endif

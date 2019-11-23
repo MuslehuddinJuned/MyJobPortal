@@ -63,9 +63,16 @@ class applied_job_controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $applied_job = DB::table('applied_job')
+                        ->where('applied_job.user_id', '=', auth()->user()->id)
+                        ->join('posted_job', 'applied_job.job_id', '=', 'posted_job.id')
+                        ->select('posted_job.*')
+                        // ->get();
+                        ->paginate(10);
+
+        return view('applied_job.show')->with('applied_job', $applied_job);
     }
 
     /**
