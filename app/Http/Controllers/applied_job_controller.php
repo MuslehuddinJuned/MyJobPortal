@@ -33,6 +33,22 @@ class applied_job_controller extends Controller
          return view('applied_job.index')->with('posted_job', $posted_job);
     }
 
+    public function applicant_list($id)
+    {   
+        if($id=="All") $applicant_list = DB::table('users')
+                        ->where('user_type', '=', 0)
+                        ->orderBy('created_at', 'desc')
+                        ->paginate(10);
+        else
+        $applicant_list = DB::table('users')
+            ->join('applied_job', 'users.id', '=', 'applied_job.user_id')
+            ->where('applied_job.job_id', '=', $id)
+            ->orderBy('applied_job.created_at', 'desc')
+            ->paginate(10);
+
+         return view('applied_job.applicant_list')->with('applicant_list', $applicant_list);
+    }
+
     
 
 
@@ -83,6 +99,15 @@ class applied_job_controller extends Controller
      */
     public function edit($id)
     {
+        //Check Re-Apply
+        $re_apply = DB::table('applied_job')
+                        ->where('user_id', '=', auth()->user()->id)
+                        ->where('job_id', '=', $id)
+                        ->get();
+        if(count($re_apply)>0) {
+            return redirect('/applied_job')
+                    ->with('error', 'You have already applied to this job');
+        }
         //check resume
         $check_resume = DB::table('users')
                         ->whereNull('resume')

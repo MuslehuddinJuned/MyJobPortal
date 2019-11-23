@@ -15,7 +15,16 @@
                 <hr>
                 <div class="row">
                     <div class="col-6"><a href="/posted_job/{{$job->id}}/edit" class="btn btn-primary float-left mr-3 px-5">Edit</a></div>
-                    <div class="col-6 text-right">Applied ()</div>
+                    
+
+                    @php 
+                    $count_applicant = DB::select('SELECT COUNT(job_id)job FROM `applied_job` WHERE job_id= :id',['id' => $job->id]);               
+                    @endphp
+
+                    @foreach ($count_applicant as $count)
+                        <div class="col-6 text-right"><a href="/applied_job/applicant_list/{{$job->id}}">Applied ({{$count->job}})</a></div>
+                    @endforeach
+                    
                 </div>
                 
             </div>
